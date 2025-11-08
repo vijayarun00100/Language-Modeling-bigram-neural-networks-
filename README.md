@@ -1,86 +1,103 @@
-# Language-Modeling-bigram-neural-networks-
-This repo is all about building language model from scratch using bigram model as well as neural network
+# 🧠 Language Modeling – Bigram & Neural Network Approach
+
+This repository demonstrates how to **build a character-level language model from scratch** using both a **Bigram Probability Model** and a **simple Neural Network**.  
+The goal is to generate realistic names (or similar sequences) based on the statistical patterns in the dataset (`names.txt`).
+
+---
+
+## 📘 Overview
+
+The project walks through:
+- Constructing a **Bigram model** (rule-based frequency approach)
+- Building a **Neural Network model** (learned parametric approach)
+- Comparing the two in terms of performance and generative ability
+
+---
+
+## 🚀 Features
+
+### 🔹 Bigram Probability Model
+- Calculates probabilities of each character following another using bigram counts.  
+- Applies **Add-One Smoothing** to handle unseen pairs.  
+- Generates new names by sampling characters based on bigram probabilities.  
+- Visualizes bigram frequency distribution.
+
+### 🔹 Neural Network Model
+- Encodes character pairs using **one-hot encoding**.  
+- Trains a **single-layer neural network** using **PyTorch** to predict the next character given the current one.  
+- Learns bigram statistics in a **parametric** manner.  
+- Uses **gradient descent** to minimize cross-entropy loss.  
+- Can generate names by **chaining predictions** from the trained model.  
+
+### 🔹 Visualization
+- Displays the **bigram frequency matrix**.  
+- (Optional) Visualizes **one-hot encodings** and training progress.
+
+---
 
 
-makeover.ipynb
-This project demonstrates a step-by-step approach to character-level language modeling using both a simple bigram counting method and a basic neural network. The primary dataset is a text file (names.txt) containing a list of names, and the goal is to generate new names (or similar sequences) that statistically resemble those in the dataset.
+---
 
-Features
-Bigram Probability Model:
+## ⚙️ Usage
 
-Calculates probabilities of every character following another character using bigram counts.
+### 1️⃣ Load the Dataset
+Reads all names from `names.txt` into a list.
 
-Smooths probabilities to avoid zero-likelihoods (add-one smoothing).
+### 2️⃣ Count Bigrams
+- Enumerates all character pairs (including start/stop tokens).  
+- Stores counts in a matrix and normalizes to derive probabilities.
 
-Generates new names by sampling according to bigram probabilities.
+### 3️⃣ Name Generation (Bigram Model)
+- Samples next characters from the learned probabilities until the end token is reached.
 
-Neural Network Model:
+### 4️⃣ Train Neural Network
+- Converts bigram pairs into input-output training sets.  
+- Trains a PyTorch model on one-hot encoded data.  
+- Computes **cross-entropy loss** during training.
 
-Encodes character pairs using one-hot encoding.
+### 5️⃣ Generate Names (Neural Network)
+- Uses trained weights to **probabilistically generate** new names character by character.
 
-Trains a single-layer neural network to predict the next character given the current one (essentially learning bigram statistics in a parametric way).
+---
 
-Uses gradient descent for training, tracks loss, and can generate names by chaining predictions.
+## 🧩 Getting Started
 
-Visualization:
+### 🖥 Requirements
+- Python 3.x  
+- PyTorch  
+- Matplotlib  
 
-Visualizes the bigram frequency matrix.
+### ▶️ How to Run
+1. Open `makeover.ipynb` in **Google Colab** or **Jupyter Notebook**.  
+2. Ensure `names.txt` is present in the working directory.  
+3. Run all cells sequentially to:
+   - Process data  
+   - Train the model  
+   - Visualize and generate outputs  
 
-(Optional) Visualizes the one-hot encoded representations.
+---
 
-Usage
-Load the Dataset:
+## 🧠 Notes
 
-Reads all names from names.txt into a list.
+- This project illustrates the **evolution from rule-based frequency models** to **simple neural networks** for text generation.  
+- Character-level modeling makes it adaptable for **any language or symbolic dataset**.  
+- Perfect for educational use and understanding **language modeling fundamentals** and **PyTorch basics**.
 
-Count Bigrams:
+---
 
-Enumerates all character pairs (with start/stop tokens) across names and counts their occurrences.
 
-Stores counts in a matrix and normalizes to get probabilities.
+---
 
-Name Generation with Bigram Model:
+## 🧑‍💻 Author
+**Vijay Arunachalam**  
+Computer Science and Engineering – VIT Chennai  
+*Specialization: Cyber Physical Systems*  
 
-Samples the next character at each step using bigram probabilities until an end token is reached.
+---
 
-Neural Network Training:
+## 🏷 License
+This project is intended for **educational and research purposes**.  
+Feel free to fork and experiment!
 
-Converts bigram pairs into input-output training pairs.
 
-Uses PyTorch to train a weight matrix on one-hot encoded data to predict the next character for each position.
-
-Calculates cross-entropy loss.
-
-Name Generation with Neural Network:
-
-Uses the trained parameters to probabilistically generate new names.
-
-Getting Started
-Requirements:
-
-Python 3.x
-
-PyTorch
-
-Matplotlib
-
-How to Run:
-
-Open makeover.ipynb in Google Colab or Jupyter Notebook.
-
-Make sure names.txt is present in the working directory.
-
-Run all cells to process data, train the model, and visualize outputs.
-
-File Structure
-makeover.ipynb: Main Colab notebook.
-
-names.txt: Plain text file with one name per line.
-
-Notes
-The project illustrates the transition from rule-based frequency models to simple neural networks for text generation.
-
-All generation is character-wise, enabling flexible adaptation for any language or symbol-based dataset.
-
-Suitable as an educational resource for understanding language modeling basics and PyTorch implementation.
 
